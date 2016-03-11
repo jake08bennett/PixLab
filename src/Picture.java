@@ -1,6 +1,6 @@
 import java.awt.*;
 import java.awt.image.BufferedImage;
-// resolves problem with java.awt.List and java.util.List
+ // resolves problem with java.awt.List and java.util.List
 
 /**
  * A class that represents a picture. This class inherits from SimplePicture and
@@ -377,6 +377,42 @@ public class Picture extends SimplePicture {
 					leftPixel.setColor(Color.BLACK);
 				else
 					leftPixel.setColor(Color.WHITE);
+			}
+		}
+	}
+	
+	public void edgeDetection2(int edgeDist) {
+		Pixel topPixel = null;
+		Pixel bottomPixel = null;
+		Pixel[][] pixels = this.getPixels2D();
+		Color bottomColor = null;
+		for (int row = 0; row < pixels.length - 1; row++) {
+			for (int col = 0; col < pixels[0].length - 1; col++) {
+				topPixel = pixels[row][col];
+				bottomPixel = pixels[row + 1][col];
+				bottomColor = bottomPixel.getColor();
+				if (topPixel.colorDistance(bottomColor) > edgeDist)
+					topPixel.setColor(Color.BLACK);
+				else
+					topPixel.setColor(Color.WHITE);
+			}
+		}
+	}
+	
+	public void edgeDetection3(int edgeDist) {
+		Pixel topPixel = null;
+		Pixel bottomPixel = null;
+		Pixel[][] pixels = this.getPixels2D();
+		Color bottomColor = null;
+		for (int row = 0; row < pixels.length - 1; row++) {
+			for (int col = 0; col < pixels[0].length - 1; col++) {
+				topPixel = pixels[row][col];
+				bottomPixel = pixels[row + 1][col];
+				bottomColor = bottomPixel.getColor();
+				if (Math.abs(topPixel.getAverage() - bottomPixel.getAverage()) > (double) edgeDist)
+					topPixel.setColor(Color.BLACK);
+				else
+					topPixel.setColor(Color.WHITE);
 			}
 		}
 	}
