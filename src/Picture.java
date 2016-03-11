@@ -1,6 +1,6 @@
 import java.awt.*;
 import java.awt.image.BufferedImage;
- // resolves problem with java.awt.List and java.util.List
+// resolves problem with java.awt.List and java.util.List
 
 /**
  * A class that represents a picture. This class inherits from SimplePicture and
@@ -312,6 +312,23 @@ public class Picture extends SimplePicture {
 			}
 		}
 	}
+	
+	public void copy2(Picture fromPic, int startRow, int startCol, int endRow, int endCol) {
+		Pixel fromPixel = null;
+		Pixel toPixel = null;
+		Pixel[][] toPixels = this.getPixels2D();
+		Pixel[][] fromPixels = fromPic.getPixels2D();
+		for (int fromRow = startRow, toRow = startRow; fromRow < fromPixels.length
+				&& toRow < endRow; fromRow++, toRow++) {
+			for (int fromCol = startCol, toCol = startCol; fromCol < fromPixels[0].length
+					&& toCol < endCol; fromCol++, toCol++) {
+				fromPixel = fromPixels[fromRow][fromCol];
+				toPixel = toPixels[toRow][toCol];
+				toPixel.setColor(fromPixel.getColor());
+			}
+		}
+	}
+
 
 	/** Method to create a collage of several pictures */
 	public void createCollage() {
@@ -327,6 +344,17 @@ public class Picture extends SimplePicture {
 		this.copy(flower2, 500, 0);
 		this.mirrorVertical();
 		this.write("collage.jpg");
+	}
+	
+	public void myCollage() {
+		Picture gull = new Picture("seagull.jpg");
+		Picture flower1 = new Picture("flower1.jpg");
+		this.copy2(gull, 233, 233, 323, 348);
+		this.copy(gull,300,300);
+		this.copy2(flower1, 0, 50,100,150);
+		this.copy2(flower1, 80,90,100,110);
+		this.copy(flower1, 200, 200);
+		this.mirrorDiagonal();
 	}
 
 	/**
