@@ -65,6 +65,21 @@ public class PictureTester
     gorge.explore();
   }
   
+  public static void testMirrorDiagonal()
+  {
+    Picture gorge = new Picture("gorge.jpg");
+    gorge.mirrorDiagonal();
+    gorge.explore();
+  }
+  
+  /** Method to test mirrorTemple */
+  public static void testMirrorTemple()
+  {
+    Picture temple = new Picture("temple.jpg");
+    temple.explore();
+    temple.mirrorTemple();
+    temple.explore();
+  }
   
   /** Method to test the collage method */
   public static void testCollage()
@@ -117,10 +132,15 @@ public class PictureTester
 //    testNegate();
 //    testGrayscale();
 //    testFixUnderwater();
-    testMirrorVertical();
+//    testMirrorVertical();
     testMirrorVerticalRightToLeft();
-    testMirrorHorizontal();
+	testMirrorHorizontal();
     testMirrorHorizontalBotToTop();
+    testMirrorDiagonal();
+    //testMirrorTemple();
+    //testMirrorArms();
+    //testMirrorGull();
+    //testMirrorDiagonal();
     //testCollage();
     //testCopy();
     //testEdgeDetection();
