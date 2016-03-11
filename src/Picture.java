@@ -1,4 +1,3 @@
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
  // resolves problem with java.awt.List and java.util.List
@@ -206,7 +205,6 @@ public class Picture extends SimplePicture {
 		Pixel[][] pixels = this.getPixels2D();
 		Pixel topPixel = null;
 		Pixel bottomPixel = null;;
-		// Sets the side length (i.e. the length of diagonal row) to the sidelength - 1
 		for (int row = 0; row < pixels.length; row++) {
 			topPixel = pixels[row][0];
 			for (int col = 0; col < row ; col++) {
@@ -220,6 +218,7 @@ public class Picture extends SimplePicture {
 		Pixel[][] pixels = this.getPixels2D();
 		Pixel toPixel = null;
 		Pixel fromPixel = null;
+		// Sets the side length (i.e. the length of diagonal row) to the sidelength - 1
 		int height = pixels.length < pixels[0].length ? pixels.length : pixels[0].length;
 		for (int row = 0; row < height ; row++) {
 			for (int col = 0; col < height ; col++) {
@@ -246,8 +245,45 @@ public class Picture extends SimplePicture {
 				leftPixel = pixels[row][col];
 				rightPixel = pixels[row][mirrorPoint - col + mirrorPoint];
 				rightPixel.setColor(leftPixel.getColor());
+				count ++;
 			}
 		}
+		System.out.println(count);
+	}
+	
+	public void mirrorGull() {
+		Pixel[][] pixels = this.getPixels2D();
+		Pixel leftPixel = null;
+		Pixel rightPixel = null;
+		int width = 348;
+		for (int row = 233; row < 325; row++) {
+			for (int col = 233; col < 348; col++) {
+				leftPixel = pixels[row][col];
+				rightPixel = pixels[row][2 * width - 1 - col];
+				rightPixel.setColor(leftPixel.getColor());
+			}
+		}
+	}
+	
+	public void mirrorArms() {
+		mirrorArm(158,190,104,170);
+		mirrorArm(168,196,238,295);
+	}
+	
+	public void mirrorArm(int rowStart, int rowEnd, int colStart, int colEnd) {
+		Pixel topPixel = null;
+		Pixel bottomPixel = null;
+		int count = 0;
+		Pixel[][] pixels = this.getPixels2D();
+		for (int row = rowStart; row < rowEnd; row++) {
+			for (int col = colStart; col < colEnd; col++) {
+				topPixel = pixels[row][col];
+				bottomPixel = pixels[rowEnd - (row - rowEnd)][col];
+				bottomPixel.setColor(topPixel.getColor());
+				count ++;
+			}
+		}
+		System.out.println(count);
 	}
 
 	/**

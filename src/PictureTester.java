@@ -81,6 +81,22 @@ public class PictureTester
     temple.explore();
   }
   
+  public static void testMirrorArms()
+  {
+    Picture img = new Picture("snowman.jpg");
+    img.explore();
+    img.mirrorArms();
+    img.explore();
+  }
+  
+  public static void testMirrorGull()
+  {
+    Picture img = new Picture("seagull.jpg");
+    img.explore();
+    img.mirrorGull();
+    img.explore();
+  }
+  
   /** Method to test the collage method */
   public static void testCollage()
   {
@@ -133,23 +149,23 @@ public class PictureTester
 //    testGrayscale();
 //    testFixUnderwater();
 //    testMirrorVertical();
-    testMirrorVerticalRightToLeft();
-	testMirrorHorizontal();
-    testMirrorHorizontalBotToTop();
-    testMirrorDiagonal();
-    //testMirrorTemple();
-    //testMirrorArms();
-    //testMirrorGull();
-    //testMirrorDiagonal();
-    //testCollage();
-    //testCopy();
-    //testEdgeDetection();
-    //testEdgeDetection2();
-    //testChromakey();
-    //testEncodeAndDecode();
-    //testGetCountRedOverValue(250);
-    //testSetRedToHalfValueInTopHalf();
-    //testClearBlueOverValue(200);
-    //testGetAverageForColumn(0);
+//    testMirrorVerticalRightToLeft();
+//    testMirrorHorizontal();
+//    testMirrorHorizontalBotToTop();
+//    testMirrorDiagonal();
+    testMirrorTemple();
+    testMirrorArms();
+    testMirrorGull();
+//    testMirrorDiagonal();
+//    testCollage();
+//    testCopy();
+//    testEdgeDetection();
+//    testEdgeDetection2();
+//    testChromakey();
+//    testEncodeAndDecode();
+//    testGetCountRedOverValue(250);
+//    testSetRedToHalfValueInTopHalf();
+//    testClearBlueOverValue(200);
+//    testGetAverageForColumn(0);
   }
 }
